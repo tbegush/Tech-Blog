@@ -40,12 +40,14 @@
   <h3 align="center">Caption King</h3>
 
   <p align="center">
-    Backend for an e-commerce store.
+   Yet another tech-blog!
     <br />
     <a href="https://github.com/tbegush/tech-blog"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/tbegush/tech-blog">View Demo</a>
+    <a href="https://tech-blog-tbegush.herokuapp.com/">View Demo</a>
+  [https://tech-blog-tbegush.herokuapp.com/](https://tech-blog-tbegush.herokuapp.com/)
+
     ·
     <a href="https://github.com/tbegush/tech-blog/issues">Report Bug</a>
     ·
@@ -161,7 +163,6 @@ Distributed under the MIT License. See `LICENSE` file for more information.
 Thomas Begush - [@tbegush](https://twitter.com/tbegush) - tbegush@gmail.com - 
 
 Project Link: [https://github.com/tbegush/tech-blog](https://github.com/tbegush/tech-blog)
-
 
 
 <!-- ACKNOWLEDGEMENTS -->
