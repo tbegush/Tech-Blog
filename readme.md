@@ -46,8 +46,6 @@
     <br />
     <br />
     <a href="https://tech-blog-tbegush.herokuapp.com/">View Demo</a>
-  [https://tech-blog-tbegush.herokuapp.com/](https://tech-blog-tbegush.herokuapp.com/)
-
     ·
     <a href="https://github.com/tbegush/tech-blog/issues">Report Bug</a>
     ·
@@ -88,7 +86,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Note Taker App](/tech-blog-screenshot.png)
+[https://tech-blog-tbegush.herokuapp.com/](https://tech-blog-tbegush.herokuapp.com/)
+![Tech-Blog App](/tech-blog-screenshot.png)
 
 
 ### Built With
