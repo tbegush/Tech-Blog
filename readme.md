@@ -34,7 +34,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/tbegush/tech-blog">
-    <img src="./tech-block-logo.png" alt="Logo" width="363" height=auto>
+    <img src="./tech-blog-logo.png" alt="Logo" width="363" height=auto>
   </a>
 
   <h3 align="center">Caption King</h3>
