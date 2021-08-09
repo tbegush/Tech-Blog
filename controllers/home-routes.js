@@ -11,6 +11,7 @@ router.get("/login", (req, res) => {
 
   res.render("login");
 });
+
 // get all posts for homepage
 router.get("/", (req, res) => {
   console.log("======================");
