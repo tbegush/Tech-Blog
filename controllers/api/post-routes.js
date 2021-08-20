@@ -8,9 +8,8 @@ const { Post, User, Comment } = require('../../models');
 
 const withAuth = require('../../utils/auth');
 
-// fetch all of the users who have an account
+// fetch all of the posts to populate the page
 router.get('/', (req, res) => {
-  console.log('======================');
   Post.findAll({
     attributes: [
       'id',
@@ -33,7 +32,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// this function will return only one user, the requested user
+// this function will return only one post, the requested post
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {

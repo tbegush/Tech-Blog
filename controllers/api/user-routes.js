@@ -1,7 +1,9 @@
+//this is where we declare our variables 
+
 const router = require('express').Router();
 const { User, Post } = require('../../models');
 
-// get all users
+// fetch all of the available users
 router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] }
@@ -24,20 +26,7 @@ router.get('/:id', (req, res) => {
         model: Post,
         attributes: ['id', 'title', 'post_text', 'created_at']
       },
-      // {
-      //   model: Comment,
-      //   attributes: ['id', 'comment_text', 'created_at'],
-      //   include: {
-      //     model: Post,
-      //     attributes: ['title']
-      //   }
-      // },
-      // {
-      //   model: Post,
-      //   attributes: ['title'],
-      //   through: Vote,
-      //   as: 'voted_posts'
-      // }
+    
     ]
   })
     .then(dbUserData => {
@@ -53,6 +42,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
+// this will allow a user to post a post  :) 
 router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
@@ -75,6 +66,8 @@ router.post('/', (req, res) => {
     });
 });
 
+
+// this will allow a user to login
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
@@ -104,6 +97,7 @@ router.post('/login', (req, res) => {
   });
 });
 
+//and of course, logout, but why? 
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -115,6 +109,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
+//find a user by ID
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
@@ -138,6 +133,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//Deletes a user, but again, why? 
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
@@ -157,4 +153,5 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+//export all the things!
 module.exports = router;
