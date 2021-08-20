@@ -1,9 +1,14 @@
+// Here we delcare our variables for our routes
+
 const router = require('express').Router();
+
 const sequelize = require('../../config/connection');
+
 const { Post, User, Comment } = require('../../models');
+
 const withAuth = require('../../utils/auth');
 
-// get all users
+// fetch all of the users who have an account
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
@@ -12,17 +17,9 @@ router.get('/', (req, res) => {
       'post_text',
       'title',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
-      // {
-      //   model: Comment,
-      //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-      //   include: {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // },
+    
       {
         model: User,
         attributes: ['username']
@@ -36,6 +33,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// this function will return only one user, the requested user
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -46,7 +44,6 @@ router.get('/:id', (req, res) => {
       'post_text',
       'title',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
       {
@@ -76,8 +73,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// this function will create a post!
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', post_text: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
     title: req.body.title,
     post_text: req.body.post_text,
@@ -90,6 +87,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+//this is for upvoting, but we don't really use it in this project
 router.put('/upvote', withAuth, (req, res) => {
   // custom static method created in models/Post.js
   Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
@@ -100,6 +98,7 @@ router.put('/upvote', withAuth, (req, res) => {
     });
 });
 
+//this updates a post by ID
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
@@ -124,6 +123,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+//and of course, we want our users to have the option to delete stuff
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Post.destroy({
@@ -144,4 +144,5 @@ router.delete('/:id', withAuth, (req, res) => {
     });
 });
 
+//and then we export the routes
 module.exports = router;
